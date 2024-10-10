@@ -1,0 +1,110 @@
+body {
+    background-color: #f1e9de;
+}
+
+.container-monstro {
+    width: 100%;
+    height: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 20px;
+    background-color: #f1e9de;
+}
+
+.mounster-grid { 
+    width: 80%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.mounster-card {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 260px;
+    height: 320px;
+    background-color: white;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    border-radius: 5px;
+
+    img {
+        width: 80%;
+        height: 80%;
+    }
+}
+.card-actions {
+    width: 80%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.actions-text {
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    padding-bottom: 20px;
+    background-color: orange;
+    border-radius: 30px;
+    font-size: 2em;
+    width: 35px;
+    height: 35px;
+}
+
+.opa {
+    width: 20%;
+    position: fixed !important;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.opa.show {
+    opacity: 1;
+}
+
+.opa-danger {
+    width: 20%;
+    position: fixed !important;
+    top: 20px;
+    right: 20px;
+    z-index: 9999;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: #edd4d4;
+    color: #571515;
+    border: 1px solid #e6c3c3;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+
+.opa-danger.show {
+    opacity: 1;
+}
+
+
+.counter {
+    width: 30%;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5px;
+    background-color: #d4eaed;
+    color: #154457;
+    border: 1px solid #c3d9e6;
+}
