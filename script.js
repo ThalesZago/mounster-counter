@@ -5,6 +5,85 @@ document.addEventListener("DOMContentLoaded", function () {
   const counterDiv = document.getElementById('counter-divi');
   let counter = 0;
 
+   // IndexedDB setup
+   let db;
+
+   // Abrir/Configurar o IndexedDB
+   const request = indexedDB.open('MounsterCounterDB', 1);
+
+   request.onerror = function(event) {
+       console.error('Erro ao abrir o IndexedDB:', event.target.errorCode);
+   };
+
+   request.onsuccess = function(event) {
+       db = event.target.result;
+       console.log('Banco de dados aberto com sucesso');
+       getCounterFromDB(); // Recupera o valor do contador ao carregar a página
+   };
+
+   request.onupgradeneeded = function(event) {
+       db = event.target.result;
+       if (!db.objectStoreNames.contains('counterStore')) {
+           const objectStore = db.createObjectStore('counterStore', { keyPath: 'id' });
+           objectStore.transaction.oncomplete = function() {
+               console.log('Object store criado');
+           };
+       }
+   };
+
+   // Função para salvar o contador no IndexedDB
+   function saveCounterToDB(counterValue) {
+    console.log(counterValue);
+       const transaction = db.transaction(['counterStore'], 'readwrite');
+       const objectStore = transaction.objectStore('counterStore');
+       const request = objectStore.put({ id: 1, value: counterValue });
+
+       request.onerror = function(event) {
+           console.error('Erro ao salvar contador:', event.target.errorCode);
+       };
+
+       request.onsuccess = function() {
+           console.log('Contador salvo com sucesso');
+       };
+   }
+
+   // Função para buscar o contador do IndexedDB ao carregar a página
+   function getCounterFromDB() {
+       const transaction = db.transaction(['counterStore']);
+       const objectStore = transaction.objectStore('counterStore');
+       const request = objectStore.get(1);
+
+       request.onerror = function(event) {
+           console.error('Erro ao recuperar contador:', event.target.errorCode);
+       };
+
+       request.onsuccess = function(event) {
+           if (request.result) {
+               counter = request.result.value;
+               counterDiv.textContent = `Contador: ${counter}`; // Atualiza o valor da div
+           } else {
+               console.log('Nenhum contador encontrado, inicializando com 0');
+           }
+       };
+   }
+
+    // Função para atualizar o contador
+    function updateCounter(value) {
+      if (value === -1) {
+         if (counter > 0) {
+          showRedAlert()
+          counter += value;
+          saveCounterToDB(counter);
+         }
+         else alert('Monstro negativo agora pae?')
+      } else {
+          showAlert();
+          counter += value;
+          saveCounterToDB(counter);
+      }
+      counterDiv.textContent = `Contador: ${counter}`; // Atualiza o valor da div com o contador
+    }
+
   // Suponha que você tenha os dados das latas, poderia vir de uma API ou ser um array
   const energyDrinks = [
     {
@@ -96,21 +175,6 @@ document.addEventListener("DOMContentLoaded", function () {
     card.appendChild(cardActions);
 
     mounsterGrid.appendChild(card);
-  }
-
-  // Função para atualizar o contador
-  function updateCounter(value) {
-    if (value === -1) {
-       if (counter > 0) {
-        showRedAlert()
-        counter += value;
-       }
-       else alert('Monstro negativo agora pae?')
-    } else {
-        showAlert();
-        counter += value;
-    }
-    counterDiv.textContent = `Contador: ${counter}`; // Atualiza o valor da div com o contador
   }
 
   function showRedAlert() {
