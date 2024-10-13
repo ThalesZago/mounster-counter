@@ -138,13 +138,34 @@ document.addEventListener("DOMContentLoaded", function () {
     {
       id: 11,
       imageUrl:
-        "https://www.imigrantesbebidas.com.br/img/bebida/images/products/full/88314-energetico-monster-energy-absolutely-zero-lata-473ml.jpg?s=465cb5b05b97cb3e7aec3a6277866cf1",
+        "https://www.confianca.com.br/ccstore/v1/images/?source=/file/v1569531738343769266/products/1754882.1.jpg",
     },
     {
       id: 12,
       imageUrl:
-        "https://cdn.awsli.com.br/2500x2500/600/600471/produto/91863108/3686394536.jpg",
+        "https://io.convertiez.com.br/m/farmaponte/shop/products/images/22664/medium/bebida-energetica-monster-energy-green-com-473ml_9404.jpg",
     },
+    {
+      id: 13,
+      imageUrl:
+        "https://images.tcdn.com.br/img/img_prod/1224045/energetico_absolutely_zero_acucar_monster_473ml_2641_1_d33101de1f36a700c48459c19caeb37a.jpg"
+    },
+    {
+      id: 14,
+      imageUrl:
+        "https://lojavirtual.urizun.com.br/image/cache/data/eftr/Img_ftr_rp_399401-1160x1160.PNG?version=20240905120415"
+    },
+    {
+      id: 15,
+      imageUrl:
+        "https://images.tcdn.com.br/img/img_prod/907279/energetico_monster_ultra_rosa_500ml_27658_1_6ad01ff479b594a1a40a434e76e435f4.jpg"
+    },
+    {
+      id: 16,
+      imageUrl:
+        "https://down-br.img.susercontent.com/file/br-11134207-7r98o-lrpz32c350sb86"
+    },
+
   ];
 
   // Função para criar os cards
